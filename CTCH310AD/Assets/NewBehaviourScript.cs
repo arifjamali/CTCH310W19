@@ -13,6 +13,13 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        move();
+
+    }
+
+    void move()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Vector3 position = this.transform.position;
@@ -37,6 +44,15 @@ public class NewBehaviourScript : MonoBehaviour
             position.y++;
             this.transform.position = position;
         }
+
+        float h = Input.GetAxis("Mouse X");
+        float v = Input.GetAxis("Mouse Y");
+
+        transform.Rotate(-v, h, 0);
+        float z = transform.eulerAngles.z;
+        transform.Rotate(0, 0, -z);
+
+
 
     }
 }
