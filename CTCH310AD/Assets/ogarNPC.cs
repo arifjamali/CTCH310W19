@@ -18,16 +18,7 @@ public class ogarNPC : MonoBehaviour
         {
             case 5:
                 print("Hello, Good Sir! Do you like physics");
-                if (hitOnHead)
-                {
-                    print("Head Shot");
-                    intel = intel--;
-                    Greet();
-                }else if(readBook && intel != 5){
-                    print("Hurray!! Your IQ went up");
-                    intel = intel++;
-                    Greet();
-                }
+
 
                 break;
 
@@ -60,6 +51,27 @@ public class ogarNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hitOnHead = true;
+            print("Head Shot");
+            intel = intel--;
+            Greet();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            readBook = true;
+            print("Read a book");
+            if (intel < 5)
+            {
+                intel = intel++;
+            }
+            else
+            {
+                print("Your are already intelligent");
+            }
+
+            Greet();
+        }
     }
 }
